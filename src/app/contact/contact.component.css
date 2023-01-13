@@ -1,0 +1,6 @@
+form{
+    width: 400px;
+}
+.notValid p{
+    color: rgb(226, 23, 23);
+}
