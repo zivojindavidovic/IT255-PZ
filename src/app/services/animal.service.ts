@@ -10,7 +10,8 @@ export class AnimalService {
 
   private baseUrl = "http://localhost:3000/animals"
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient) { 
+  }
 
   public getAnimals(): Observable<Animal[]> {
     return this._httpClient.get<Animal[]>(this.baseUrl).pipe(
@@ -35,8 +36,18 @@ export class AnimalService {
     )
   }
 
+  public editAnimalById(id: number, name: string, price: number, image: string): Observable<Animal>{
+    const body = {name: name, price: price, image: image};
+    return this._httpClient.put<Animal>(this.baseUrl+'/'+id, body).pipe(
+      map((data:any) => this._createAnimalFromObject(data))
+    )
+  }
 
   private _createAnimalFromObject(animal: any): any {
     return new Animal(animal.id, animal.name, animal.price, animal.image)
   }
 }
+
+
+
+ 

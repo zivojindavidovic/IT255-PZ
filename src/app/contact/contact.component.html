@@ -1,40 +1,39 @@
 <form [formGroup]="contactForm" class="d-block mx-auto mt-5">
     <div class="form-group">
-        <label for="">Unesite Vaše ime i prezime:</label>
+        <label for="">Enter your name:</label>
         <input type="text" formControlName="name" class="form-control my-2" placeholder="John Doe">
     </div>
     <div *ngIf="contactForm.controls['name'].invalid && (contactForm.controls['name'].dirty || contactForm.controls['name'].touched)">
         <div class="notValid" *ngIf="$any(contactForm.controls['name']).errors.required">
-            <p>Ime i Prezime je obavezno</p>
+            <p>*Required</p>
         </div>
         <div class="notValid" *ngIf="$any(contactForm.controls['name']).errors?.minlength">
-            <p>Kratko ime i prezime</p>
+            <p>Too short</p>
         </div>
     </div>
     <div class="form-group">
-        <label for="">Unesite Vaše E-Mail:</label>
+        <label for="">Enter your E-Mail:</label>
         <input type="text" formControlName="email" class="form-control my-2" placeholder="example@something.com">
     </div>
     <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)">
         <div class="notValid" *ngIf="$any(contactForm.controls['email']).errors?.required">
-            <p>E-Mail je obavezan</p>
+            <p>*Required</p>
         </div>
         <div class="notValid" *ngIf="$any(contactForm.controls['email']).errors?.email">
-            <p>Unesite ispravan E-Mail</p>
+            <p>Enter corrent E-Mail</p>
         </div>
     </div>
     <div class="form-group">
-        <label for="">Unesite tekst poruke</label>
+        <label for="">Enter message</label>
         <textarea type="text" formControlName="message" class="form-control my-2"></textarea>
     </div>
     <div *ngIf="contactForm.controls['message'].invalid && (contactForm.controls['message'].dirty || contactForm.controls['message'].touched)">
         <div class="notValid" *ngIf="$any(contactForm.controls['message']).errors?.required">
-            <p>Poruka ne može biti prazna</p>
+            <p>*Required</p>
         </div>
         <div class="notValid" *ngIf="$any(contactForm.controls['message']).errors?.minlength">
-            <p>Poruka mora biti duža</p>
+            <p>Too short</p>
         </div>
     </div>
-    <button class="btn btn-primary d-block mx-auto mt-4">Pošaljite</button>
-
+    <button class="btn btn-primary d-block mx-auto mt-4">Send</button>
 </form>
