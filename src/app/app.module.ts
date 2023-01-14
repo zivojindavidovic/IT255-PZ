@@ -6,17 +6,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AnimalDetailsComponent } from './animal-details/animal-details.component';
+import { AddAnimalComponent } from './add-animal/add-animal.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    AnimalDetailsComponent,
+    AddAnimalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

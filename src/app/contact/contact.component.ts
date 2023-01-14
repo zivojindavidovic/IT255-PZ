@@ -18,7 +18,7 @@ export class ContactComponent {
       name: ['',[Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
       message: ['', [Validators.required, Validators.minLength(20)]]
-    })
+    });
   }
 
 }

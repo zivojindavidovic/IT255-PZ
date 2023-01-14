@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div class="container mt-5">
+    <div class="row row-cols-3" >
+      <div class="col" *ngFor="let animal of animals">
+        <img src="{{animal.image}}" alt="Not available">
+        <h3 class="text-center">Name: {{animal.name}}</h3>
+        <p class="text-center">Price: {{animal.price}}</p>
+        <a class="btn btn-primary d-block mx-auto mb-3" [routerLink]="['/home', animal.id]">Review</a>
+        <button (click)="deleteAnimal(animal.id)" type="button" class="btn btn-primary d-block mx-auto mb-3">Delete Animal</button>
+      </div>
+    </div>
+</div>
