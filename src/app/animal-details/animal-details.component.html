@@ -1,11 +1,15 @@
 <div class="container mt-5 text-center">
+   <app-login></app-login>
+</div>
+
+<div class="container mt-5 text-center">
     <img src="{{animal.image}}" alt="Image unavailable">
     <h1>Name: {{animal.name}}</h1>
     <h1>Price: {{animal.price}}</h1>
     <a [routerLink]="['/home']" class="btn btn-primary">Go Back</a>
 </div>
 
-<div class="container mt-5 text-center">
+<div class="container mt-5 text-center" *ngIf="loginService.isLoggedIn()">
     <form action="" class="d-block mx-auto mt-5" [formGroup]="editAnimalForm">
         <div class="form-group">
             <label for="type">Name</label>

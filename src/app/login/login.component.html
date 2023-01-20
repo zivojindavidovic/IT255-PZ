@@ -1,0 +1,17 @@
+<div *ngIf="message">
+    <p>{{message}}</p>
+</div>
+<form class="d-block mx-auto mt-5">
+    <div class="form-group">
+        <div *ngIf="!authService.isLoggedIn()">
+            <input type="text" class="form-control mb-3" name="username" #username placeholder="Username">
+            <input type="password" class="form-control mb-3" name="password" #password placeholder="Password">
+            <a class="btn btn-primary" (click)="login(username.value, password.value)">Login</a>
+        </div>
+    </div>
+</form>
+
+<div *ngIf="authService.getUser()">
+    <p>Ulogovan kao: {{authService.getUser()}}</p>
+    <a class="btn btn-primary" (click)="logout()">Logout</a>
+</div>

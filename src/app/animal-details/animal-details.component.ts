@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { isEmpty } from 'rxjs';
 import { Animal } from '../models/animal';
 import { AnimalService } from '../services/animal.service';
+import { LoginServiceService } from '../services/login-service.service';
 
 @Component({
   selector: 'app-animal-details',
@@ -13,7 +15,7 @@ export class AnimalDetailsComponent {
 
   public animal: Animal;
   public editAnimalForm: FormGroup;
-  constructor(private _animalService: AnimalService, private _router: ActivatedRoute){}
+  constructor(private _animalService: AnimalService, private _router: ActivatedRoute, public loginService: LoginServiceService){}
 
   ngOnInit(): void{
     this._router.params.subscribe(params => {
@@ -44,6 +46,9 @@ export class AnimalDetailsComponent {
     let name = this.editAnimalForm.get('name')?.value;
     let price = this.editAnimalForm.get('price')?.value;
     let image = this.editAnimalForm.get('image')?.value;
+    if(image===''){
+      image = this.animal.image;
+    }
     this._animalService.editAnimalById(id, name, price, image).subscribe((data)=>
       this.animal = data
     )
